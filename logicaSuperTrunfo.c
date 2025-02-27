@@ -53,34 +53,57 @@ int main() {
     printf("Pontos turísticos: ");
     scanf("%d", &pontos_turisticos_carta2);
 
-    // Exibição dos dados da Carta 1
-    printf("\n--- Dados da Carta 1 ---\n");
-    printf("Estado: %s\n", estado_carta1);
-    printf("Código: %d\n", codigo_carta1);
-    printf("Nome da cidade: %s\n", nome_carta1);
-    printf("População: %d\n", populacao_carta1);
-    printf("Área: %.2f\n", area_carta1);
-    printf("PIB: %.2f\n", pib_carta1);
-    printf("Pontos turísticos: %d\n", pontos_turisticos_carta1);
+    // Menu interativo
+    int opcao;
+    printf("\n--- Menu de Comparação ---\n");
+    printf("1. População\n");
+    printf("2. Área\n");
+    printf("3. PIB\n");
+    printf("4. Pontos Turísticos\n");
+    printf("Escolha o atributo para comparação: ");
+    scanf("%d", &opcao);
 
-    // Exibição dos dados da Carta 2
-    printf("\n--- Dados da Carta 2 ---\n");
-    printf("Estado: %s\n", estado_carta2);
-    printf("Código: %d\n", codigo_carta2);
-    printf("Nome da cidade: %s\n", nome_carta2);
-    printf("População: %d\n", populacao_carta2);
-    printf("Área: %.2f\n", area_carta2);
-    printf("PIB: %.2f\n", pib_carta2);
-    printf("Pontos turísticos: %d\n", pontos_turisticos_carta2);
-
-    // Comparação das Cartas (exemplo: comparação pela população)
+    // Comparação aninhada e switch
     printf("\n--- Comparação das Cartas ---\n");
-    if (populacao_carta1 > populacao_carta2) {
-        printf("Carta 1 venceu (população).\n");
-    } else if (populacao_carta2 > populacao_carta1) {
-        printf("Carta 2 venceu (população).\n");
-    } else {
-        printf("As cartas têm a mesma população.\n");
+    switch (opcao) {
+        case 1:
+            if (populacao_carta1 > populacao_carta2) {
+                printf("Carta 1 venceu (população).\n");
+            } else if (populacao_carta2 > populacao_carta1) {
+                printf("Carta 2 venceu (população).\n");
+            } else {
+                printf("As cartas têm a mesma população.\n");
+            }
+            break;
+        case 2:
+            if (area_carta1 > area_carta2) {
+                printf("Carta 1 venceu (área).\n");
+            } else if (area_carta2 > area_carta1) {
+                printf("Carta 2 venceu (área).\n");
+            } else {
+                printf("As cartas têm a mesma área.\n");
+            }
+            break;
+        case 3:
+            if (pib_carta1 > pib_carta2) {
+                printf("Carta 1 venceu (PIB).\n");
+            } else if (pib_carta2 > pib_carta1) {
+                printf("Carta 2 venceu (PIB).\n");
+            } else {
+                printf("As cartas têm o mesmo PIB.\n");
+            }
+            break;
+        case 4:
+            if (pontos_turisticos_carta1 > pontos_turisticos_carta2) {
+                printf("Carta 1 venceu (pontos turísticos).\n");
+            } else if (pontos_turisticos_carta2 > pontos_turisticos_carta1) {
+                printf("Carta 2 venceu (pontos turísticos).\n");
+            } else {
+                printf("As cartas têm o mesmo número de pontos turísticos.\n");
+            }
+            break;
+        default:
+            printf("Opção inválida.\n");
     }
 
     return 0;
