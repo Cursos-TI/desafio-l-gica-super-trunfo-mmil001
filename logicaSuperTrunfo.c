@@ -53,57 +53,43 @@ int main() {
     printf("Pontos turísticos: ");
     scanf("%d", &pontos_turisticos_carta2);
 
-    // Menu interativo
-    int opcao;
+    // Menu dinâmico para escolha dos atributos
+    int atributo1, atributo2;
     printf("\n--- Menu de Comparação ---\n");
     printf("1. População\n");
     printf("2. Área\n");
     printf("3. PIB\n");
     printf("4. Pontos Turísticos\n");
-    printf("Escolha o atributo para comparação: ");
-    scanf("%d", &opcao);
+    printf("Escolha o primeiro atributo: ");
+    scanf("%d", &atributo1);
+    printf("Escolha o segundo atributo: ");
+    scanf("%d", &atributo2);
 
-    // Comparação aninhada e switch
+    // Lógica de decisão complexa com operadores ternários
     printf("\n--- Comparação das Cartas ---\n");
-    switch (opcao) {
-        case 1:
-            if (populacao_carta1 > populacao_carta2) {
-                printf("Carta 1 venceu (população).\n");
-            } else if (populacao_carta2 > populacao_carta1) {
-                printf("Carta 2 venceu (população).\n");
-            } else {
-                printf("As cartas têm a mesma população.\n");
-            }
-            break;
-        case 2:
-            if (area_carta1 > area_carta2) {
-                printf("Carta 1 venceu (área).\n");
-            } else if (area_carta2 > area_carta1) {
-                printf("Carta 2 venceu (área).\n");
-            } else {
-                printf("As cartas têm a mesma área.\n");
-            }
-            break;
-        case 3:
-            if (pib_carta1 > pib_carta2) {
-                printf("Carta 1 venceu (PIB).\n");
-            } else if (pib_carta2 > pib_carta1) {
-                printf("Carta 2 venceu (PIB).\n");
-            } else {
-                printf("As cartas têm o mesmo PIB.\n");
-            }
-            break;
-        case 4:
-            if (pontos_turisticos_carta1 > pontos_turisticos_carta2) {
-                printf("Carta 1 venceu (pontos turísticos).\n");
-            } else if (pontos_turisticos_carta2 > pontos_turisticos_carta1) {
-                printf("Carta 2 venceu (pontos turísticos).\n");
-            } else {
-                printf("As cartas têm o mesmo número de pontos turísticos.\n");
-            }
-            break;
-        default:
-            printf("Opção inválida.\n");
+    int resultado1 = 0, resultado2 = 0;
+
+    switch (atributo1) {
+        case 1: resultado1 = (populacao_carta1 > populacao_carta2) ? 1 : (populacao_carta1 < populacao_carta2) ? -1 : 0; break;
+        case 2: resultado1 = (area_carta1 > area_carta2) ? 1 : (area_carta1 < area_carta2) ? -1 : 0; break;
+        case 3: resultado1 = (pib_carta1 > pib_carta2) ? 1 : (pib_carta1 < pib_carta2) ? -1 : 0; break;
+        case 4: resultado1 = (pontos_turisticos_carta1 > pontos_turisticos_carta2) ? 1 : (pontos_turisticos_carta1 < pontos_turisticos_carta2) ? -1 : 0; break;
+    }
+
+    switch (atributo2) {
+        case 1: resultado2 = (populacao_carta1 > populacao_carta2) ? 1 : (populacao_carta1 < populacao_carta2) ? -1 : 0; break;
+        case 2: resultado2 = (area_carta1 > area_carta2) ? 1 : (area_carta1 < area_carta2) ? -1 : 0; break;
+        case 3: resultado2 = (pib_carta1 > pib_carta2) ? 1 : (pib_carta1 < pib_carta2) ? -1 : 0; break;
+        case 4: resultado2 = (pontos_turisticos_carta1 > pontos_turisticos_carta2) ? 1 : (pontos_turisticos_carta1 < pontos_turisticos_carta2) ? -1 : 0; break;
+    }
+
+    // Determinação da carta vencedora
+    if (resultado1 > resultado2) {
+        printf("Carta 1 venceu (%s e %s).\n", (atributo1 == 1) ? "população" : (atributo1 == 2) ? "área" : (atributo1 == 3) ? "PIB" : "pontos turísticos", (atributo2 == 1) ? "população" : (atributo2 == 2) ? "área" : (atributo2 == 3) ? "PIB" : "pontos turísticos");
+    } else if (resultado2 > resultado1) {
+        printf("Carta 2 venceu (%s e %s).\n", (atributo1 == 1) ? "população" : (atributo1 == 2) ? "área" : (atributo1 == 3) ? "PIB" : "pontos turísticos", (atributo2 == 1) ? "população" : (atributo2 == 2) ? "área" : (atributo2 == 3) ? "PIB" : "pontos turísticos");
+    } else {
+        printf("Empate (%s e %s).\n", (atributo1 == 1) ? "população" : (atributo1 == 2) ? "área" : (atributo1 == 3) ? "PIB" : "pontos turísticos", (atributo2 == 1) ? "população" : (atributo2 == 2) ? "área" : (atributo2 == 3) ? "PIB" : "pontos turísticos");
     }
 
     return 0;
